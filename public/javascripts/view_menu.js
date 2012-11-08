@@ -227,10 +227,10 @@ gxp.plugins.ViewMenu = Ext.extend(gxp.plugins.Tool, {
         return this.reprojectLayer(layer, {
           projection: projection,
           units: options.units,
-          resolutions: rec.get('resolutions')[projection] || options.resolutions,
-          maxResolution: rec.get('maxResolution')[projection] || options.maxResolution,
-          minResolution: rec.get('minResolution')[projection] || options.minResolution,
-          maxExtent: maxExtent || options.maxExtent,
+          resolutions: rec.get('resolutions') ? rec.get('resolutions')[projection] || options.resolutions : options.resolutions,
+          maxResolution: rec.get('maxResolution') ? rec.get('maxResolution')[projection] || options.maxResolution : options.maxResolution,
+          minResolution: rec.get('minResolution') ? rec.get('minResolution')[projection] || options.minResolution : options.minResolution,
+          maxExtent: maxExtent || options.maxExtent, 
           restrictedExtent: restrictedExtent || options.maxExtent
         });
       } else if (source.ptype === 'gxp_wmssource' || source.ptype === 'gispro_arcgis') {
