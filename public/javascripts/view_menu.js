@@ -83,7 +83,7 @@ gxp.plugins.ViewMenu = Ext.extend(gxp.plugins.Tool, {
   ovLayer: [],
   maxRatio: 50,
   minRatio: 10,
-  wrapDateLine: false,
+  wrapDateLine: true,
   realDateLine: false,
   baseRec: null,
   old_projection: null,
@@ -300,7 +300,7 @@ gxp.plugins.ViewMenu = Ext.extend(gxp.plugins.Tool, {
       return layer.redraw();
     }
   },
-  genProjectionOptions: function() {
+  genProjectionOptions: function(_this) {
     var k, v, _ref, _results;
     _ref = this.projections;
     _results = [];
@@ -309,6 +309,9 @@ gxp.plugins.ViewMenu = Ext.extend(gxp.plugins.Tool, {
       _results.push({
         boxLabel: this.projectionsText[k],
         inputValue: k,
+		onClick: function(){
+			_this.menu.hideMenu();
+		},
         name: 'proj',
         id: "gispro" + k + "ProjectionRadio",
         checked: this.target.map.projection === k
@@ -372,7 +375,7 @@ gxp.plugins.ViewMenu = Ext.extend(gxp.plugins.Tool, {
             }
           }, {
             id: 'gisproViewWrapCheckBox',
-            checked: false,
+            checked: this.wrapDateLine,
             text: this.wrapText,
             tooltip: this.wrapTooltip,
             listeners: {
@@ -394,10 +397,10 @@ gxp.plugins.ViewMenu = Ext.extend(gxp.plugins.Tool, {
                   itemCls: 'x-check-group-alt',
                   columns: 1,
                   style: 'margin-left: 6px',
-                  items: [this.genProjectionOptions()],
+                  items: [this.genProjectionOptions(_this)],
                   listeners: {
                     change: function(radiogroup, radio) {
-                      return _this.reprojectMap(radio.inputValue, true);
+					  return _this.reprojectMap(radio.inputValue, true);					  
                     }
                   }
                 }
