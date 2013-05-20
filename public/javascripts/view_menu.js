@@ -387,7 +387,36 @@ gxp.plugins.ViewMenu = Ext.extend(gxp.plugins.Tool, {
                 }
               }
             }
-          }, {
+          }, 
+		  {
+			text: "Язык",
+            menu: {
+				items: [{
+					xtype: 'radiogroup',					
+					columns: 1,
+					vertical: true,
+					listeners : {
+						change: function(radiogroup, radio) {
+							var params = Ext.urlDecode(location.search.substring(1));
+							params.lang = radio.inputValue;
+							window.location = window.location.origin + window.location.pathname + "?" +Ext.urlEncode(params);
+						}
+					},
+					items: [{
+							boxLabel: 'Русский',
+							name: 'lang',
+							inputValue: 'ru',
+							checked: GeoExt.Lang.locale != "en"
+						}, {
+							boxLabel: 'English',
+							name: 'lang',
+							inputValue: 'en',
+							checked: GeoExt.Lang.locale === "en"
+					}]
+				}]
+            }
+          },
+		  {
             text: this.projectionsGroupText,
             menu: {
               items: [
