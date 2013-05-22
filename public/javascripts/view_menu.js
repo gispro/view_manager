@@ -13,23 +13,23 @@ gxp.plugins.ViewMenu = Ext.extend(gxp.plugins.Tool, {
       return gxp.plugins.WMSSource.prototype.viewMangerUsed = true;
     }
   },
-  panelText: 'View',
-  panelTooltip: 'View',
-  graticulText: 'Graticul',
-  graticulTooltip: 'Graticul',
-  projectionsGroupText: 'Projections',
-  overviewMapText: 'Overview map',
-  overviewMapTooltip: 'Overview map',
-  rssText: 'Rss',
-  rssTooltip: 'Rss',
-  wrapText: 'Wrap',
-  wrapTooltip: 'Wrap',
+  panelText: locale.viewMenu.panelText,
+  panelTooltip: locale.viewMenu.panelTooltip,
+  graticulText: locale.viewMenu.graticulText,
+  graticulTooltip: locale.viewMenu.graticulTooltip,
+  projectionsGroupText: locale.viewMenu.projectionsGroupText,
+  overviewMapText: locale.viewMenu.overviewMapText,
+  overviewMapTooltip: locale.viewMenu.overviewMapTooltip,
+  rssText: locale.viewMenu.rssText,
+  rssTooltip: locale.viewMenu.rssTooltip,
+  wrapText: locale.viewMenu.wrapText,
+  wrapTooltip: locale.viewMenu.wrapTooltip,
   projectionsText: {
-    'EPSG:900913': 'Mercator',
-    'EPSG:4326': 'Geographic',
-    'EPSG:102012': 'Conus',
-    'EPSG:3576': 'Polar North',
-    'EPSG:3976': 'Polar South'
+    'EPSG:900913': locale.viewMenu.projectionsText['EPSG:900913'],
+    'EPSG:4326': locale.viewMenu.projectionsText['EPSG:4326'],
+    'EPSG:102012': locale.viewMenu.projectionsText['EPSG:102012'],
+    'EPSG:3576': locale.viewMenu.projectionsText['EPSG:3576'],
+    'EPSG:3976': locale.viewMenu.projectionsText['EPSG:3976']
   },
   projections: {
     "EPSG:900913": {
@@ -389,7 +389,7 @@ gxp.plugins.ViewMenu = Ext.extend(gxp.plugins.Tool, {
             }
           }, 
 		  {
-			text: "Язык",
+			text: locale.viewMenu.languageText,
             menu: {
 				items: [{
 					xtype: 'radiogroup',					
