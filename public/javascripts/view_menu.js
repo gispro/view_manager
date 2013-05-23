@@ -308,10 +308,7 @@ gxp.plugins.ViewMenu = Ext.extend(gxp.plugins.Tool, {
       v = _ref[k];
       _results.push({
         boxLabel: this.projectionsText[k],
-        inputValue: k,
-		onClick: function(){
-			_this.menu.hideMenu();
-		},
+        inputValue: k,		
         name: 'proj',
         id: "gispro" + k + "ProjectionRadio",
         checked: this.target.map.projection === k
@@ -415,20 +412,19 @@ gxp.plugins.ViewMenu = Ext.extend(gxp.plugins.Tool, {
 					}]
 				}]
             }
-          },
+          },		  
 		  {
             text: this.projectionsGroupText,
             menu: {
               items: [
                 {
-                  xtype: 'radiogroup',
-                  fieldLabel: 'Single Column',
-                  itemCls: 'x-check-group-alt',
-                  columns: 1,
-                  style: 'margin-left: 6px',
-                  items: [this.genProjectionOptions(_this)],
+                  xtype: 'radiogroup',					
+				  columns: 1,
+				  vertical: true,
+				  items: this.genProjectionOptions(_this),
                   listeners: {
                     change: function(radiogroup, radio) {
+					  _this.menu.menu.hide()
 					  return _this.reprojectMap(radio.inputValue, true);					  
                     }
                   }
