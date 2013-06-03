@@ -388,9 +388,12 @@ gxp.plugins.ViewMenu = Ext.extend(gxp.plugins.Tool, {
 		  {
 			text: locale.viewMenu.languageText,
             menu: {
+				width : 100,
 				items: [{
 					xtype: 'radiogroup',					
+					itemCls: 'x-check-group-alt',
 					columns: 1,
+					style: 'margin-left:6px',
 					vertical: true,
 					listeners : {
 						change: function(radiogroup, radio) {
@@ -401,6 +404,7 @@ gxp.plugins.ViewMenu = Ext.extend(gxp.plugins.Tool, {
 					},
 					items: [{
 							boxLabel: 'Русский',
+							width: 50,
 							name: 'lang',
 							inputValue: 'ru',
 							checked: GeoExt.Lang.locale != "en"
@@ -416,10 +420,14 @@ gxp.plugins.ViewMenu = Ext.extend(gxp.plugins.Tool, {
 		  {
             text: this.projectionsGroupText,
             menu: {
+			width : 140,
               items: [
                 {
                   xtype: 'radiogroup',					
-				  columns: 1,
+				  fieldLabel: 'Single Column',
+                  itemCls: 'x-check-group-alt',
+                  columns: 1,
+                  style: 'margin-left: 6px',
 				  vertical: true,
 				  items: this.genProjectionOptions(_this),
                   listeners: {
